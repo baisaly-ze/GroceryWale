@@ -1,22 +1,30 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import CustomButton from "./components/CustomButton/CustomButton";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from "./components/NavBar/NavBar";
-// import "./assets/css/style.css"
 import Banner from "./components/Banner/Banner";
+import CartPage from "./components/CartPage";
+import ProductPage from "./components/ProductPage";
+import React from "react";
 
-
-function App() {
+function Layout() {
   return (
     <>
       <NavBar />
-      <div class="content">
-      
-       <Banner/>
+      <div className="content">
+        <Banner />
       </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/products" element={<ProductPage />} />
+      </Routes>
+    </Router>
   );
 }
 

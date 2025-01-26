@@ -1,26 +1,17 @@
-
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
-const navItems = ['Home','Products', 'About', 'Contact','login'];
 
 function DrawerAppBar(props) {
-  const { window } = props;
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "About", path: "/about" },
+  ];
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -28,16 +19,16 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h3" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
         GroceryWale
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+          <ListItem key={item.name} disablePadding>
+            <ListItemButton component={Link} to={item.path} sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -45,66 +36,113 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      {/* <AppBar component="nav"> */}
-      <AppBar component="nav" sx={{ backgroundColor: 'green' }}>
+      <AppBar component="nav" sx={{ backgroundColor: "green" }}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
+          <IconButton color="inherit" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2, display: { sm: "none" } }}>
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h4"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
+          <Typography variant="h6" sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
             GroceryWale
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: 'white' }}>
-                {item}
+              <Button key={item.name} component={Link} to={item.path} sx={{ color: "white" }}>
+                {item.name}
               </Button>
-
-             
             ))}
+            <Box className="mx-2" sx={{ display: "inline" }}>
+              <div className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Login
+              </div>
+              <div className="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#signupModal">
+                Sign Up
+              </div>
+            </Box>
+            <IconButton color="inherit">
+              <Link to="/cart" style={{ color: "inherit", textDecoration: "none" }}>
+                <i className="fa-solid fa-cart-shopping"></i>
+              </Link>
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-       
-    </Box>
-    </Box>
-  
-        )
-      }
 
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+        }}
+      >
+        {drawer}
+      </Drawer>
+
+      <Box component="main" sx={{ p: 0 }}>
+        <Toolbar />
+      </Box>
+
+      {/* Modals (Add Below) */}
+      {/* Login Modal */}
+      <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="loginModalLabel">Login</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="loginEmail" className="form-label">Email Address</label>
+                  <input type="email" className="form-control" id="loginEmail" placeholder="Enter your email" />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="loginPassword" className="form-label">Password</label>
+                  <input type="password" className="form-control" id="loginPassword" placeholder="Enter your password" />
+                </div>
+                <button type="submit" className="btn btn-primary w-100">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Signup Modal */}
+      <div className="modal fade" id="signupModal" tabIndex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="signupModalLabel">Sign Up</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="signupEmail" className="form-label">Email Address</label>
+                  <input type="email" className="form-control" id="signupEmail" placeholder="Enter your email" />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="signupPassword" className="form-label">Password</label>
+                  <input type="password" className="form-control" id="signupPassword" placeholder="Enter your password" />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="signupConfirmPassword" className="form-label">Confirm Password</label>
+                  <input type="password" className="form-control" id="signupConfirmPassword" placeholder="Confirm your password" />
+                </div>
+                <button type="submit" className="btn btn-primary w-100">Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Box>
+  );
+}
 
 export default DrawerAppBar;

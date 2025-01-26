@@ -1,0 +1,109 @@
+/* Scoped Styles for Product Page */
+.product-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif; /* Simple and clean font */
+}
+
+.product-page body {
+  background-color: #13b7e0e0 !important; /* Dark background */
+  color: #f5f5f5 !important; /* Light text for readability */
+  min-height: 100vh; /* Ensure it covers the full viewport */
+}
+
+.product-page .hero-section {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+/* Section Titles */
+.product-page h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #ffffff; /* White text for titles */
+  background-color: #228b22; /* Green background for section headers */
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow effect for headers */
+}
+
+/* Product Section Containers */
+.product-page .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.product-page .product-section, 
+.product-page .product-section2, 
+.product-page .product-section3 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: #228b22; /* Green background for sections */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Shadow effect for sections */
+}
+
+/* Image Cards */
+.product-page .space, 
+.product-page .space1, 
+.product-page .space2 {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  background-color: #ffd700; /* Yellow card background */
+  padding: 10px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect for cards */
+}
+
+.product-page .space img, 
+.product-page .space1 img, 
+.product-page .space2 img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-page .space:hover, 
+.product-page .space1:hover, 
+.product-page .space2:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+}
+
+/* Section-Specific Margins */
+.product-page .grocery, 
+.product-page .Snacks, 
+.product-page .Beauty {
+  margin: 2rem 0 1rem 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .product-page .product-section, 
+  .product-page .product-section2, 
+  .product-page .product-section3 {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .product-page .space, 
+  .product-page .space1, 
+  .product-page .space2 {
+    width: 120px;
+  }
+
+  .product-page h2 {
+    font-size: 1.5rem;
+  }
+}
