@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -15,6 +14,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import '../../assets/css/navbar.css';
 
 const drawerWidth = 240;
 const navItems = ['Home','Products', 'About', 'Contact','login'];
@@ -22,9 +23,14 @@ const navItems = ['Home','Products', 'About', 'Contact','login'];
 function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
   const drawer = (
@@ -50,7 +56,6 @@ function DrawerAppBar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      {/* <AppBar component="nav"> */}
       <AppBar component="nav" sx={{ backgroundColor: 'green' }}>
         <Toolbar>
           <IconButton
@@ -65,17 +70,35 @@ function DrawerAppBar(props) {
           <Typography
             variant="h4"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, display: 'flex', alignItems: 'center' }}
           >
+            
+            <span className="logo-icon" style={{ fontSize: '24px', marginRight: '8px' }}>🌱</span>
             GroceryWale
           </Typography>
+          
+          <Box className="search-bar-container" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, mx: 2 }}>
+            <TextField
+             className="search-bar" 
+              variant="outlined"
+              fullWidth
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              sx={{
+                backgroundColor: 'white',
+                borderRadius: '4px',
+                '& .MuiInputBase-root': {
+                  padding: '2px 10px',
+                },
+              }}
+            />
+          </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: 'white' }}>
                 {item}
               </Button>
-
-             
             ))}
           </Box>
         </Toolbar>
@@ -99,12 +122,9 @@ function DrawerAppBar(props) {
       </nav>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
-       
+      </Box>
     </Box>
-    </Box>
-  
-        )
-      }
-
+  );
+}
 
 export default DrawerAppBar;

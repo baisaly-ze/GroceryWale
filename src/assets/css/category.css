@@ -1,0 +1,72 @@
+.category-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+  }
+  
+  .category-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 85px;
+  }
+  
+  .category-card {
+    text-align: center;
+    width: 120px;
+  }
+  
+  .category-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    gap: 40px;
+    object-fit: cover;
+  }
+  
+  .category-name {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .category-button {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-left: 1500px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .category-button:hover {
+    background-color: #45a049;
+  }
+  
+  .v-button{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-left: 1500px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .category-button:hover {
+      background-color: #45a049;
+    }

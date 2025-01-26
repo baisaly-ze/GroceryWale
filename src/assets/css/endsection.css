@@ -1,0 +1,74 @@
+
+.endsection-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  
+  .section-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+ 
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  
+  .tag {
+    padding: 8px 12px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tag:hover {
+    background-color: #e0e0e0;
+  }
+  
+  
+  .features-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    
+  }
+  
+  
+  .feature-card {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .feature-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  
+  .feature-description {
+    font-size: 20px;
+    color: #555;
+  }
