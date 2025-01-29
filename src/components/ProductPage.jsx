@@ -1,10 +1,14 @@
 import React from "react";
 import "@/assets/css/ProductPage.css";
+import NavBar from "../components/NavBar/NavBar";
+import Footer from '../components/Footer/Footer'
 
 function ProductPage() {
   return (
     <div className="product-page">
     <div>
+    <NavBar/>
+    <br /><br /><br/>
       {/* Hero Section */}
       <div>
         <img className="hero-section" src="paan-corner-desktop.webp" alt="Hero Section" />
@@ -48,7 +52,11 @@ function ProductPage() {
       </div>
     </div>
     </div>
+    <div>
+      <Footer/>
     </div>
+    </div>
+    
   );
 }
 

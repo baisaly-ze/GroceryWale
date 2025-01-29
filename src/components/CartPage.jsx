@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from '../components/NavBar/NavBar'; // Import the NavBar component
 
 const CartPage = () => {
   // State to manage cart items
@@ -43,6 +44,9 @@ const CartPage = () => {
       className="d-flex flex-column justify-content-center align-items-center bg-dark"
       style={{ minHeight: '100vh', padding: '2rem' }}
     >
+      {/* Add NavBar here */}
+      <NavBar />
+
       <div className="cart w-100">
         <h1 className="text-success mb-4">Your Shopping Cart</h1>
         <div className="d-flex flex-wrap justify-content-center gap-4">
